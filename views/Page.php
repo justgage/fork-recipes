@@ -46,7 +46,7 @@ class Page {
 
 
    public function bake() {
-      $html = "";
+      $html = "<!DOCTYPE html>";
       $html .= "<html>";
       $html .= "<head>";
       $html .= "<title>$this->title</title>";
