@@ -6,4 +6,8 @@ $app->get('/hello/:name', function ($name) {
    echo "Hello, $name";
 });
 
+$app->get('/', function () {
+   echo "Welcome to Fork Recipes";
+});
+
 $app->run();
