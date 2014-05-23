@@ -1,13 +1,13 @@
-<?php
-require 'vendor/autoload.php';
+<?php 
 
-$app = new \Slim\Slim();
-$app->get('/hello/:name', function ($name) {
-   echo "Hello, $name";
-});
+include 'helpers/Model.php';
 
-$app->get('/', function () {
-   echo "Welcome to Fork Recipes";
-});
+$r = new Recipe();
 
-$app->run();
+$recipes = $r->getAll();
+
+foreach($recipes as $recipe) {
+
+   echo "<h2>" . $recipe["title"] . "</h2>";
+   echo "<div>" . $recipe["instructions"] . "</div>";
+}
