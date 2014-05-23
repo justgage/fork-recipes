@@ -9,7 +9,6 @@ abstract class Model {
       $dbPort = "";
       $dbUser = "forkBot";
       $dbPassword = "KBLmts6EXcdfdQPP";
-
       $dbName = "fork";
 
       $openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
@@ -25,6 +24,7 @@ abstract class Model {
          $dbPort = ":" . getenv('OPENSHIFT_MYSQL_DB_PORT');
          $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
          $dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+         $dbName = "forkrecipes";
       }
 
       //echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br />\n";
