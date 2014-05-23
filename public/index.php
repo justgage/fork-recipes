@@ -1,6 +1,5 @@
 <?php 
 
-/*
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/Recipe.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/views/Page.php';
 
@@ -23,6 +22,3 @@ $page->addCSS("main");
 $page->addJS("alert");
 
 echo $page->bake();
-*/
-
-echo "hello";

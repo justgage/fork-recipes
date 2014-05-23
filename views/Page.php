@@ -30,7 +30,7 @@ class Page {
    private function bakeCSS() {
       $html = "";
       foreach($this->css as $css) {
-         $html .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"/public/css/$css.css\">";
+         $html .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/$css.css\">";
       }
       return $html;
    }
@@ -39,7 +39,7 @@ class Page {
    private function bakeJS() {
       $html = "";
       foreach($this->js as $js) {
-         $html .= "<script type=\"text/javascript\" src=\"/public/js/$js.js\"></script>";
+         $html .= "<script type=\"text/javascript\" src=\"/js/$js.js\"></script>";
       }
       return $html;
    }
