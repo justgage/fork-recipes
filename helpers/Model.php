@@ -2,7 +2,7 @@
 
 abstract class Model {
 
-   public $db;
+   protected $db;
 
    public function open() {
       $dbHost = "localhost";
@@ -14,11 +14,9 @@ abstract class Model {
 
       $openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
 
-      if ($openShiftVar === null || $openShiftVar == "")
-      {
-         echo "Using local credentials: ";
-      }
-      else
+      //checks if we are NOT connected to openshift.
+      // note, string compare CAN'T be a !== for some reason
+      if ($openShiftVar !== null && $openShiftVar != "")
       {
          // In the openshift environment
          //echo "Using openshift credentials: ";
@@ -35,7 +33,7 @@ abstract class Model {
       try {
          $this->db = new PDO("mysql:host=$dbHost$dbPort;dbname=$dbName", $dbUser, $dbPassword);
       } catch (PDOException $e) {
-         echo "error connecting to database! $e";
+         echo "error connecting to database!";
       }
 
    }
@@ -54,7 +52,7 @@ abstract class Model {
 class Recipe extends Model {
    public function getAll() {
       $req = $this->db->query("SELECT id, title, instructions, authorId, forkedFromId FROM recipe");
-      return $req->fetchAll(PDO::FETCH_ASSOC);
+      return $req->fetchAll(PDO::FETCH_CLASS);
    }
 
    public function __construct($connect = true) {

@@ -8,6 +8,6 @@ $recipes = $r->getAll();
 
 foreach($recipes as $recipe) {
 
-   echo "<h2>" . $recipe["title"] . "</h2>";
-   echo "<div>" . $recipe["instructions"] . "</div>";
+   echo "<h2>" . $recipe->title . "</h2>";
+   echo "<div>" . $recipe->instructions . "</div>";
 }
