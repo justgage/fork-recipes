@@ -1,5 +1,5 @@
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT'] . "/models/Model.php");
+require_once("$root/models/Model.php");
 class Recipe extends Model {
 
    // Get all recipes

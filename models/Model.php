@@ -13,7 +13,7 @@ abstract class Model {
 
       $openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
 
-      //checks if we are NOT connected to openshift.
+      // checks if we are NOT connected to openshift.
       // note, string compare CAN'T be a !== for some reason
       if ($openShiftVar !== null && $openShiftVar != "")
       {

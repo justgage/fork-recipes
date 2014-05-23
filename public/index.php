@@ -1,7 +1,8 @@
 <?php 
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/models/Recipe.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/views/Page.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/path.php';
+require_once "$root/models/Recipe.php";
+require_once "$root/views/Page.php";
 
 $r = new Recipe();
 $page = new Page();
