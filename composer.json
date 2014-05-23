@@ -1,0 +1,14 @@
+{
+    "name": "justgage/forkrecipes",
+    "description": "a simple recipe website",
+    "require": {
+        "slim/slim": "2.*"
+    },
+    "authors": [
+        {
+            "name": "Gage Peterson",
+            "email": "justgage@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
