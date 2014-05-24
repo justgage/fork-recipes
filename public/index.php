@@ -1,7 +1,7 @@
 <?php 
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/path.php';
-require "$root/vendor/autoload.php";
+require_once "$root/vendor/autoload.php";
 
 $app = new \Slim\Slim(array(
    'templates.path' => './templates'
@@ -37,9 +37,18 @@ $app->get('/recipe', function () use ($root, $public) {
    $page->addCSS("css/main");
    //$page->addJS("js/alert");
 
-   echo $page->bake();
+   echo $page->render();
+});
+
+$app->get('/recipe/:id', function ($id) use ($root, $public) {
+   require_once "$root/models/Recipe.php";
+   require_once "$root/views/Page.php";
+
+   $r = new Recipe();
+   $page = new Page($public);
+   $recipe = $r->getId($id);
+
+   print_r($recipe);
 });
 
 $app->run();
-
-

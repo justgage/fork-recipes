@@ -1,6 +1,8 @@
 <?php 
 
-class Page implements \Slim\View {
+require_once "$root/vendor/autoload.php";
+
+class Page extends \Slim\View {
    public $title;
    public $body;
    protected $css;
