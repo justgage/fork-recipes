@@ -1,7 +1,5 @@
 <?php 
 
-require_once "$root/vendor/autoload.php";
-
 class Page {
    public $title;
    public $body;
@@ -35,7 +33,7 @@ class Page {
    private function renderCSS() {
       $html = "";
       foreach($this->css as $css) {
-         $html .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$this->path/$css.css\">";
+         $html .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"/$css.css\">";
       }
       return $html;
    }
@@ -44,12 +42,16 @@ class Page {
    private function renderJS() {
       $html = "";
       foreach($this->js as $js) {
-         $html .= "<script type=\"text/javascript\" src=\"$this->path/$js.js\"></script>";
+         $html .= "<script type=\"text/javascript\" src=\"/$js.js\"></script>";
       }
       return $html;
    }
 
-   public function render($template, $vars) {
+   public function render($template, $vars = null) {
+      // note this auto adds a underscore to the begining
+      if (is_null($vars) == false) {
+         extract($vars, EXTR_PREFIX_ALL, ""); 
+      }
 ?>
 <!DOCTYPE html>
 <html>

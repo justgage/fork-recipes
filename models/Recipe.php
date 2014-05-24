@@ -22,6 +22,7 @@ class Recipe extends Model {
             u.username AS author_usename 
          FROM recipe r 
          INNER JOIN user u on r.authorId=u.id
+         WHERE r.id = :id
          ';
 
       $req = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
