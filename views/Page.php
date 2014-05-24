@@ -58,7 +58,7 @@ class Page {
    <?php echo $this->renderCSS(); ?>
    </head>
 <body>
-   <?php include "$template"; ?>
+   <?php include $_SERVER['DOCUMENT_ROOT'] . "/$template"; ?>
    <?php echo $this->renderJS(); ?>
 </body>
 </html>
