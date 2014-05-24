@@ -19,7 +19,8 @@ class Recipe extends Model {
             r.title,
             r.instructions,
             r.forkedFromId,
-            u.username AS author_usename 
+            u.username AS author_usename,
+            u.id AS author_id 
          FROM recipe r 
          INNER JOIN user u on r.authorId=u.id
          WHERE r.id = :id

@@ -10,4 +10,4 @@ $page = new Page($public);
 $page->title = "Homepage";
 $page->addCSS("css/main");
 //$page->addJS("js/alert");
-$page->render("templates/recipeList.php", array("recipes" => $recipes));
+$page->render("templates/recipeIndex.php", array("recipes" => $recipes));

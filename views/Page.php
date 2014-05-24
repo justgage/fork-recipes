@@ -56,7 +56,7 @@ class Page {
 <!DOCTYPE html>
 <html>
    <head>
-   <title> <?php echo $this->title ?> </title>
+   <title> <?php echo $this->title . " ~ ForkRecipes" ?> </title>
    <?php echo $this->renderCSS(); ?>
    </head>
 <body>

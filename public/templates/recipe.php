@@ -5,7 +5,9 @@
    <?php echo $_recipe->instructions ?>
 <div>
    <strong>Author: </strong>
-   <?php echo $_recipe->author_usename ?> 
+   <a href="<?php echo "/user/id.php?id=$_recipe->author_id" ?>">
+      <?php echo $_recipe->author_usename ?> 
+   </a>
 </div>
 </p>
 </div>
