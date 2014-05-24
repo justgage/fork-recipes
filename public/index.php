@@ -5,21 +5,26 @@ require_once "$root/models/Recipe.php";
 require_once "$root/views/Page.php";
 
 $r = new Recipe();
-$page = new Page();
+$page = new Page($public);
 
 $recipes = $r->getAll();
 
 $page->title = "Homepage";
-$body = "<h1>$page->title</h1>";
+$body = "";
+$body .= "<div class='ui'>";
+$body .= "<h1>$page->title</h1>";
 
 foreach($recipes as $recipe) {
    $body .=  "<h2>" . $recipe->title . "</h2>";
    $body .= "<div>" . $recipe->instructions . "</div>";
 }
 
-$page->body = $body;
+$body .= '<div class="red">red</div>';
 
-$page->addCSS("main");
-$page->addJS("alert");
+$body .= "</div>";
+
+$page->body = $body;
+$page->addCSS("css/main");
+//$page->addJS("js/alert");
 
 echo $page->bake();

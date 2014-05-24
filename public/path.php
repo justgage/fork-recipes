@@ -1,5 +1,6 @@
 <?php
 
 $root = "..";
+$public = ""; 
 
 

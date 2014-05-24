@@ -1,0 +1,7 @@
+#!/bin/bash
+# .openshift/action_hooks/deploy
+unset GIT_DIR
+cd $OPENSHIFT_REPO_DIR
+curl -sS https://getcomposer.org/installer | php
+php composer.phar install --prefer-source --no-interaction --no-dev
+php composer.phar dump-autoload

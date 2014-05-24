@@ -1,13 +1,16 @@
 <?php 
+
 class Page {
    public $title;
    public $body;
    protected $css;
    protected $js;
+   protected $path;
 
-   public function __construct() {
+   public function __construct($path) {
       $this->css = [];
       $this->js = [];
+      $this->path = $path;
    }
 
    public function addCSS() {
@@ -30,7 +33,7 @@ class Page {
    private function bakeCSS() {
       $html = "";
       foreach($this->css as $css) {
-         $html .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/$css.css\">";
+         $html .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$this->path/$css.css\">";
       }
       return $html;
    }
@@ -39,7 +42,7 @@ class Page {
    private function bakeJS() {
       $html = "";
       foreach($this->js as $js) {
-         $html .= "<script type=\"text/javascript\" src=\"/js/$js.js\"></script>";
+         $html .= "<script type=\"text/javascript\" src=\"$this->path/$js.js\"></script>";
       }
       return $html;
    }
