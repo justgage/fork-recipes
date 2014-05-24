@@ -2,7 +2,7 @@
 
 require_once "$root/vendor/autoload.php";
 
-class Page extends \Slim\View {
+class Page {
    public $title;
    public $body;
    protected $css;
@@ -49,20 +49,20 @@ class Page extends \Slim\View {
       return $html;
    }
 
+   public function render($template, $vars) {
+?>
+<!DOCTYPE html>
+<html>
+   <head>
+   <title> <?php echo $this->title ?> </title>
+   <?php echo $this->renderCSS(); ?>
+   </head>
+<body>
+   <?php include "$template"; ?>
+   <?php echo $this->renderJS(); ?>
+</body>
+</html>
+<?php   } 
 
-   public function render() {
-      $html = "<!DOCTYPE html>";
-      $html .= "<html>";
-      $html .= "<head>";
-      $html .= "<title>$this->title</title>";
-      $html .= $this->renderCSS();
-      $html .= "</head>";
-      $html .= "<body>";
-      $html .= $this->body;
-      $html .= $this->renderJS();
-      $html .= "</body>";
-      $html .= "</html>";
-      return $html;
-   }
 
 }

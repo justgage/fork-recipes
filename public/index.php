@@ -20,24 +20,9 @@ $app->get('/recipe', function () use ($root, $public) {
    $recipes = $r->getAll();
 
    $page->title = "Homepage";
-   $body = "";
-   $body .= "<div class='ui'>";
-   $body .= "<h1>$page->title</h1>";
-
-   foreach($recipes as $recipe) {
-      $body .=  "<h2>" . $recipe->title . "</h2>";
-      $body .= "<div>" . $recipe->instructions . "</div>";
-   }
-
-   $body .= '<div class="red">red</div>';
-
-   $body .= "</div>";
-
-   $page->body = $body;
    $page->addCSS("css/main");
    //$page->addJS("js/alert");
-
-   echo $page->render();
+   echo $page->render("templates/recipeList.php", $recipes);
 });
 
 $app->get('/recipe/:id', function ($id) use ($root, $public) {
@@ -48,7 +33,6 @@ $app->get('/recipe/:id', function ($id) use ($root, $public) {
    $page = new Page($public);
    $recipe = $r->getId($id);
 
-   print_r($recipe);
 });
 
 $app->run();

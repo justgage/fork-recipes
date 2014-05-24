@@ -21,8 +21,7 @@ class Recipe extends Model {
             r.forkedFromId,
             u.username AS author_usename 
          FROM recipe r 
-         INNER JOIN user u 
-         WHERE r.id=:id AND r.authorid=u.id;
+         INNER JOIN user u on r.authorId=u.id
          ';
 
       $req = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
