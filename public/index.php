@@ -1,30 +1,45 @@
 <?php 
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/path.php';
-require_once "$root/models/Recipe.php";
-require_once "$root/views/Page.php";
+require "$root/vendor/autoload.php";
 
-$r = new Recipe();
-$page = new Page($public);
+$app = new \Slim\Slim(array(
+   'templates.path' => './templates'
+));
 
-$recipes = $r->getAll();
+$app->get('/', function () {
+   echo "<h1>Welcome to Fork Recipes</h1>";
+});
 
-$page->title = "Homepage";
-$body = "";
-$body .= "<div class='ui'>";
-$body .= "<h1>$page->title</h1>";
+$app->get('/recipe', function () use ($root, $public) {
+   require_once "$root/models/Recipe.php";
+   require_once "$root/views/Page.php";
+   $r = new Recipe();
+   $page = new Page($public);
 
-foreach($recipes as $recipe) {
-   $body .=  "<h2>" . $recipe->title . "</h2>";
-   $body .= "<div>" . $recipe->instructions . "</div>";
-}
+   $recipes = $r->getAll();
 
-$body .= '<div class="red">red</div>';
+   $page->title = "Homepage";
+   $body = "";
+   $body .= "<div class='ui'>";
+   $body .= "<h1>$page->title</h1>";
 
-$body .= "</div>";
+   foreach($recipes as $recipe) {
+      $body .=  "<h2>" . $recipe->title . "</h2>";
+      $body .= "<div>" . $recipe->instructions . "</div>";
+   }
 
-$page->body = $body;
-$page->addCSS("css/main");
-//$page->addJS("js/alert");
+   $body .= '<div class="red">red</div>';
 
-echo $page->bake();
+   $body .= "</div>";
+
+   $page->body = $body;
+   $page->addCSS("css/main");
+   //$page->addJS("js/alert");
+
+   echo $page->bake();
+});
+
+$app->run();
+
+

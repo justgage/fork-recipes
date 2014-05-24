@@ -1,6 +1,6 @@
 <?php 
 
-class Page {
+class Page implements \Slim\View {
    public $title;
    public $body;
    protected $css;
@@ -30,7 +30,7 @@ class Page {
    }
 
    // make the HTML for the css includes
-   private function bakeCSS() {
+   private function renderCSS() {
       $html = "";
       foreach($this->css as $css) {
          $html .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$this->path/$css.css\">";
@@ -39,7 +39,7 @@ class Page {
    }
 
    // make the HTML for the js includes
-   private function bakeJS() {
+   private function renderJS() {
       $html = "";
       foreach($this->js as $js) {
          $html .= "<script type=\"text/javascript\" src=\"$this->path/$js.js\"></script>";
@@ -48,16 +48,16 @@ class Page {
    }
 
 
-   public function bake() {
+   public function render() {
       $html = "<!DOCTYPE html>";
       $html .= "<html>";
       $html .= "<head>";
       $html .= "<title>$this->title</title>";
-      $html .= $this->bakeCSS();
+      $html .= $this->renderCSS();
       $html .= "</head>";
       $html .= "<body>";
       $html .= $this->body;
-      $html .= $this->bakeJS();
+      $html .= $this->renderJS();
       $html .= "</body>";
       $html .= "</html>";
       return $html;
