@@ -8,4 +8,4 @@ $r = new Recipe();
 $recipe = $r->getId($id);
 
 $page = new Page($public);
-$page->render("templates/recipe.php", $recipe);
+$page->render("templates/recipe.php", array( "recipe" => $recipe));

@@ -1,12 +1,11 @@
-<?php $recipe = $vars;  ?>
 <div class="content">
 <?php include "nav.php";?>
-<h1><?php echo $recipe->title ?></h1>
+<h1><?php echo $_recipe->title ?></h1>
 <p>
-   <?php echo $recipe->instructions ?>
+   <?php echo $_recipe->instructions ?>
 <div>
    <strong>Author: </strong>
-   <?php echo $recipe->author_usename ?> 
+   <?php echo $_recipe->author_usename ?> 
 </div>
 </p>
 </div>
