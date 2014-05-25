@@ -7,5 +7,5 @@ $id = $_GET["id"];
 $r = new Recipe();
 $recipe = $r->getId($id);
 
-$page = new Page($public);
-$page->render("templates/recipe.php", array( "recipe" => $recipe));
+$page = new Page("$root/views/templates");
+$page->render("recipe.php", array( "recipe" => $recipe));

@@ -9,8 +9,9 @@ $u = new User();
 $recipes = $u->getUserRecipes($id);
 $user = $u->getUser($id);
 
-$page = new Page($public);
-$page->render("templates/user.php", array(
+$page = new Page("$root/views/templates");
+
+$page->render("user.php", array(
    "recipes" => $recipes,
    "user" => $user
 ));

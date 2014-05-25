@@ -1,6 +1,6 @@
 <?php
+$public = $_SERVER['DOCUMENT_ROOT'];
+$root = implode("/",array_slice(explode("/", $public),0,-1));
 
-$root = $_SERVER['DOCUMENT_ROOT'] . "/..";
-$public = $_SERVER['DOCUMENT_ROOT'] . '/';
 
 

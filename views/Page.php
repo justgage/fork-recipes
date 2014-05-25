@@ -1,5 +1,6 @@
 <?php 
 
+
 class Page {
    public $title;
    public $body;
@@ -60,7 +61,7 @@ class Page {
    <?php echo $this->renderCSS(); ?>
    </head>
 <body>
-   <?php include $_SERVER['DOCUMENT_ROOT'] . "/$template"; ?>
+   <?php include "$this->path/$template"; ?>
    <?php echo $this->renderJS(); ?>
 </body>
 </html>
