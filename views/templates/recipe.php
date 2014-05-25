@@ -1,6 +1,7 @@
-<div class="content">
 <?php include "nav.php";?>
-<h1><?php echo $_recipe->title ?></h1>
+<div class="page-header">
+   <h1><?php echo $_recipe->title ?></h1>
+</div>
 <p>
    <?php echo $_recipe->instructions ?>
 <div>
@@ -10,4 +11,3 @@
    </a>
 </div>
 </p>
-</div>

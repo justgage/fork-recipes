@@ -1,5 +1,5 @@
-<div class="content">
-<h1>Recipes</h1>
 <?php include "nav.php";?>
-<?php include "recipeList.php";?>
+<div class="page-header">
+   <h1>Recipes</h1>
 </div>
+<?php include "recipeList.php";?>

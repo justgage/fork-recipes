@@ -31,6 +31,24 @@ class Recipe extends Model {
       return $req->fetchAll(PDO::FETCH_CLASS)[0]; // <- return only one!
    }
 
+   public function search($text) {
+      $sql = "
+         SELECT 
+            r.id,
+            r.title,
+            r.instructions,
+            r.forkedFromId
+         FROM recipe r 
+         INNER JOIN user u on r.authorId=u.id
+         WHERE r.title LIKE '%:text%'
+         ";
+
+      $req = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+      $req->execute(array(":text" => $text));
+      return $req->fetchAll(PDO::FETCH_CLASS);
+
+   }
+
    public function __construct($connect = true) {
       parent::__construct($connect);
    }

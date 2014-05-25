@@ -9,7 +9,9 @@ class Page {
    protected $path;
 
    public function __construct($path) {
-      $this->css = [];
+      $this->css = [
+         'bower_components/bootstrap/dist/css/bootstrap',
+      ];
       $this->js = [];
       $this->path = $path;
    }
@@ -61,8 +63,15 @@ class Page {
    <?php echo $this->renderCSS(); ?>
    </head>
 <body>
-   <?php include "$this->path/$template"; ?>
-   <?php echo $this->renderJS(); ?>
+
+<?php
+      include "$this->path/include/header.php";
+
+      include "$this->path/$template";
+      echo $this->renderJS();
+
+      include "$this->path/include/footer.php";
+?>
 </body>
 </html>
 <?php   } 
