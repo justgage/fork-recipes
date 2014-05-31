@@ -1,4 +1,5 @@
 <?php include "$this->path/nav.php";?>
+<div class="form-group">
 <h2>Login</h2>
 <?php 
 
@@ -11,12 +12,17 @@ if($_auth) {
    echo '<a href="/user/backend.php" class="btn btn-primary">Enter</a>';
 } else {
 ?>
-<form action="/user/auth.php" method="POST">
-<input name="username" placeholder="username" type="text">
-<input name="password" placeholder="password" type="text">
-<input type="submit" value="register">
+<div class="center-block">
+<form action="/user/auth.php" method="POST" role="form">
+<div><input name="username" placeholder="username" type="text"></div>
+<div><input name="password" placeholder="password" type="password"></div>
+<div><input type="submit" value="go"></div>
 </form>
+</div>
+
+<a href="/user/newform.php">Register</a>
 
 <?php 
 }
 ?>
+</div>

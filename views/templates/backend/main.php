@@ -1,7 +1,6 @@
 <?php include "$this->path/nav.php";?>
-
 <h1>Your Backend </h1>
-<div> logged in as <strong>"<?php echo $_user->username ?>"</strong>
+<div class="pull-right"> logged in as <strong>"<?php echo $_user->username ?>"</strong>
 <a href="/user/logout.php">Logout</a>
 </div>
 <?php

@@ -1,4 +1,4 @@
-<?php include "nav.php";?>
+<?php include "$this->path/nav.php";?>
 <div class="page-header">
    <h1><?php echo $_recipe->title ?></h1>
 </div>
