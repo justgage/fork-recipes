@@ -11,6 +11,7 @@ class Recipe extends Model {
       return $req->fetchAll(PDO::FETCH_CLASS);
    }
 
+
    public function getId($id) {
 
       $sql = '
@@ -30,6 +31,8 @@ class Recipe extends Model {
       $req->execute(array(":id" => $id));
       return $req->fetchAll(PDO::FETCH_CLASS)[0]; // <- return only one!
    }
+
+
 
    public function search($text) {
       $sql = "

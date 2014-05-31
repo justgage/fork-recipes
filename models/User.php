@@ -11,6 +11,46 @@ class User extends Model {
       return $req->fetchAll(PDO::FETCH_CLASS);
    }
 
+   // create user
+   public function createUser($username, $pass, $email) {
+
+      if($username === NULL || $pass=== NULL ||  $email === NULL) {
+         return true; // yes error
+      }
+
+
+      $sql = '
+         INSERT INTO user (username, password, email, salt)
+         VALUES (:username, :pass, :email, :salt)
+         ';
+
+      $length = 10;
+
+      $salt = substr(str_shuffle("0123456789abcdefghipqrstuvwxyz" .
+         "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()"), 0, $length);
+
+      $passHash = hash("md2" , $salt . $pass);
+
+      echo $pass . " password <br />";
+      echo $salt . " salt<br />";
+      echo $passHash . " password hash. len->" . strlen($passHash)."<br />";
+
+      try {
+         $req = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+      } catch (PDOException $e) {
+         return true;
+      }
+
+      $req->execute(array(
+         ":username"  => $username,
+         ":pass"  => $passHash,
+         ":email" => $email,
+         ":salt"  => $salt
+      ));
+
+      return false;
+   }
+
    public function getUser($id) {
       $sql = '
          SELECT id, username
