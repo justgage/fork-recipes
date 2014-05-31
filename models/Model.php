@@ -32,6 +32,7 @@ abstract class Model {
 
       try {
          $this->db = new PDO("mysql:host=$dbHost$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       } catch (PDOException $e) {
          echo "error connecting to database!";
       }

@@ -6,11 +6,6 @@ require "../authCheck.php";
 
 $page = new Page("$root/views/templates");
 
-$recipes = $user->getRecipes();
-
-$page->render("backend/main.php", array(
-   "recipes" => $recipes,
-   "user" => $user
-));
+$page->render("backend/createRecipe.php", array());
 
 

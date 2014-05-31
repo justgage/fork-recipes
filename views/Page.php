@@ -55,6 +55,7 @@ class Page {
       if (is_null($vars) == false) {
          extract($vars, EXTR_PREFIX_ALL, ""); 
       }
+
 ?>
 <!DOCTYPE html>
 <html>

@@ -56,4 +56,25 @@ class Recipe extends Model {
       parent::__construct($connect);
    }
 
+   public function create($authorId, $title, $instructions, $forkedFromId = NULL) {
+      $sql = 'INSERT INTO recipe 
+         (`authorId`, `title`, `instructions`, `forkedFromId`) 
+         VALUES (:authorId, :title, :instructions, :forkedFromId);';
+
+      $req = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+
+      try {
+         $worked = $req->execute(array(
+            ":authorId" => $authorId,
+            ":title" => $title,
+            ":instructions" => $instructions,
+            ":forkedFromId" => $forkedFromId
+         ));
+
+         return $worked;
+      } catch (PDOException $e) {
+         return false;
+      }
+   }
+
 }

@@ -2,15 +2,19 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/path.php";
 require_once "$root/models/User.php";
 
-$username = $_POST['username'];
-$password = $_POST['password'];
-$email = $_POST['email'];
 
-$newUser = new User;
+$user = new User;
+if ( !isset($_POST['username']) || !isset($_POST['password']) || !isset($_POST['email']) ) {
+   header("Location: /user/newform.php");
+}
 
-$err = $newUser->createUser($username, $password, $email);
+$user->username = $_POST['username'];
+$user->password = $_POST['password'];
+$user->email    = $_POST['email'];
 
-if($err > 0) {
+$err = $user->create();
+
+if($err) {
    header("Location: /user/newform.php?err=1");
 } else {
    header("Location: /user/backend.php");
