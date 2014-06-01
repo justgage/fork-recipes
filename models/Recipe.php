@@ -77,4 +77,44 @@ class Recipe extends Model {
       }
    }
 
+   public function delete($id) {
+      $sql = 'DELETE FROM recipe WHERE id = :id;';
+      $req = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+
+      try {
+         $worked = $req->execute(array(
+            ":id"           => $id,
+         ));
+
+      } catch (PDOException $e) {
+         echo "$e";
+         die();
+         return false;
+      }
+
+      return $worked;
+   }
+
+   public function update($id, $title, $instructions) {
+      $sql = 'UPDATE recipe SET
+         `title` = :title,
+         `instructions` = :instructions
+         WHERE `id` = :id
+         LIMIT 1';
+
+      try {
+      $req = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+
+         $worked = $req->execute(array(
+            ":id"           => $id,
+            ":title"        => $title,
+            ":instructions" => $instructions,
+         ));
+
+         return $worked;
+      } catch (PDOException $e) {
+         return false;
+      }
+   }
+
 }
