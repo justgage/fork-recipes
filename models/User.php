@@ -199,7 +199,7 @@ class User extends Model {
 
 
       if ($id !== NULL) {
-         fill();
+         $this->fill();
       }
    }
 

@@ -3,11 +3,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/path.php";
 require_once "$root/models/User.php";
 require_once "$root/views/Page.php";
 
-$id = $_GET["id"];
 $u = new User();
+$u->id = $_GET["id"];
 
-$recipes = $u->getUserRecipes($id);
-$user = $u->getUser($id);
+$recipes = $u->getRecipes();
+$user = $u->getObjectById($u->id);
 
 $page = new Page("$root/views/templates");
 
