@@ -5,8 +5,15 @@ class Recipe extends Model {
    // Get all recipes
    public function getAll() {
       $req = $this->db->query('
-         SELECT id, title, instructions, authorId, forkedFromId 
-         FROM recipe
+         SELECT 
+            r.id,
+            r.title,
+            r.instructions,
+            r.forkedFromId,
+            u.username AS author_usename,
+            u.id AS author_id 
+         FROM recipe r 
+         INNER JOIN user u on r.authorId=u.id
          ');
       return $req->fetchAll(PDO::FETCH_CLASS);
    }
@@ -29,7 +36,7 @@ class Recipe extends Model {
 
       $req = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
       $req->execute(array(":id" => $id));
-      return $req->fetchAll(PDO::FETCH_CLASS)[0]; // <- return only one!
+      return $req->fetch(PDO::FETCH_OBJ);
    }
 
 
@@ -56,6 +63,7 @@ class Recipe extends Model {
       parent::__construct($connect);
    }
 
+
    public function create($authorId, $title, $instructions, $forkedFromId = NULL) {
       $sql = 'INSERT INTO recipe 
          (`authorId`, `title`, `instructions`, `forkedFromId`) 
@@ -71,10 +79,18 @@ class Recipe extends Model {
             ":forkedFromId" => $forkedFromId
          ));
 
-         return $worked;
+         $id = $this->db->lastInsertId();
+
+         return $id;
       } catch (PDOException $e) {
          return false;
       }
+   }
+
+   public function fork($authorId, $id) {
+      $copy = $this->getId($id);
+
+      return $this->create($authorId, $copy->title, $copy->instructions, $copy->id);
    }
 
    public function delete($id) {

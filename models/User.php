@@ -34,9 +34,15 @@ class User extends Model {
          $temp = $req->fetch(PDO::FETCH_OBJ);
 
 
-         $this->salt = $temp->salt;
+         if (is_null($temp)) {
+            return false;
+         } else {
 
-         return true;
+            $this->salt = $temp->salt;
+
+            return true;
+         }
+
       } catch (PDOException $e) {
          return false;
       }

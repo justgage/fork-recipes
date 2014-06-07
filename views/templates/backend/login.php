@@ -1,10 +1,10 @@
 <?php include "$this->path/nav.php";?>
-<div class="form-group">
+<div class="form-group login-pane well">
 <h2>Login</h2>
 <?php 
 
 if(isset($_GET['err'])) {
-   echo '<p class="bg-danger">Sorry wrong password or username! Please try again!</p>';
+   echo '<div class="alert alert-warning">Sorry wrong password or username! Please try again!</div>';
 }
 
 if($_auth) {
@@ -14,13 +14,23 @@ if($_auth) {
 ?>
 <div class="center-block">
 <form action="/user/auth.php" method="POST" role="form">
-<div><input name="username" placeholder="username" type="text"></div>
-<div><input name="password" placeholder="password" type="password"></div>
-<div><input type="submit" value="go"></div>
+
+   <div class="form-group">
+      <div><input class="form-control" name="username" placeholder="username" type="text"></div>
+   </div>
+
+   <div class="form-group">
+      <div><input class="form-control" name="password" placeholder="password" type="password"></div>
+   </div>
+
+   <div class="form-group">
+      <div><input class="form-control" type="submit" value="go"></div>
+   </div>
+
 </form>
 </div>
 
-<a href="/user/newform.php">Register</a>
+<a class="" href="/user/newform.php">Register</a>
 
 <?php 
 }

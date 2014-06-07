@@ -2,6 +2,9 @@
 <div class="page-header">
    <h1><?php echo $_recipe->title ?></h1>
 </div>
+<div>
+<a class="btn btn-primary" href="/recipe/newForm.php?id=<?php echo $_recipe->id ?>">Fork</a>
+</div>
 <p>
    <?php echo $_recipe->instructions ?>
 <div>

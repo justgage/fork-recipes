@@ -11,6 +11,7 @@ class Page {
    public function __construct($path) {
       $this->css = [
          'bower_components/bootstrap/dist/css/bootstrap',
+         'bower_components/fork/css/main',
       ];
       $this->js = [];
       $this->path = $path;
