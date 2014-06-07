@@ -1,7 +1,7 @@
 <?php 
 
-if( !isset($active) ) {
-   $active = "Home";
+if( (include '_tab.php') == 'OK') { 
+   $tab = "Home";
 }
 
 $tabs = [
@@ -14,7 +14,7 @@ $tabs = [
 <ul class="nav nav-tabs">
 <?php
 foreach ($tabs as $name => $href) {
-   if ($name === $active) {
+   if ($name === $tab) {
       echo "<li class='active'><a href='$href'>$name</a></li>";
    } else {
       echo "<li class=''><a href='$href'>$name</a></li>";

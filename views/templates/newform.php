@@ -1,6 +1,4 @@
 
-<?php include "$this->path/nav.php";?>
-
 <div class="form-group login-pane well">
 <h1>Sign up</h1>
 

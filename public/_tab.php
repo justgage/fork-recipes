@@ -1,3 +1,3 @@
 <?php 
-$active = "Home"
+$tab = "Home"
 ?>

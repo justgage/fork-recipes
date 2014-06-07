@@ -10,7 +10,8 @@ $recipes = $user->getRecipes();
 
 $page->render("backend/main.php", array(
    "recipes" => $recipes,
-   "user" => $user
+   "user" => $user,
+   "tab" => $tab
 ));
 
 

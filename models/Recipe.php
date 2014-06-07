@@ -14,6 +14,7 @@ class Recipe extends Model {
             u.id AS author_id 
          FROM recipe r 
          INNER JOIN user u on r.authorId=u.id
+         ORDER BY r.title
          ');
       return $req->fetchAll(PDO::FETCH_CLASS);
    }

@@ -1,9 +1,11 @@
-<?php include "$this->path/nav.php";?>
 <div class="page-header">
+<a class="pull-right btn btn-primary" href="/recipe/newForm.php?id=<?php echo $_recipe->id ?>">
+Fork
+<i class="glyphicon glyphicon-share-alt"></i>
+</a>
    <h1><?php echo $_recipe->title ?></h1>
 </div>
 <div>
-<a class="btn btn-primary" href="/recipe/newForm.php?id=<?php echo $_recipe->id ?>">Fork</a>
 </div>
 <p>
    <?php echo $_recipe->instructions ?>

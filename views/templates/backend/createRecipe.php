@@ -1,4 +1,3 @@
-<?php include "$this->path/nav.php";?>
 
 <form action="/recipe/create.php" method="POST">
 

@@ -1,5 +1,3 @@
-<?php include "$this->path/nav.php";?>
-
 <form action="/recipe/update.php" method="POST">
 
 <div>

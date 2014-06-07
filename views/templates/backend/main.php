@@ -1,4 +1,3 @@
-<?php include "$this->path/nav.php";?>
 <h1>Backend </h1>
 
 <?php if(isset($_GET['del'])): ?>

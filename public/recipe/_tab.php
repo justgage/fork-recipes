@@ -1,3 +1,3 @@
 <?php 
-$active = "Recipes"
+$tab = "Recipes"
 ?>

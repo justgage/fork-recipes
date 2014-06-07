@@ -1,20 +1,25 @@
 <?php 
 
 
+
 class Page {
    public $title;
    public $body;
    protected $css;
    protected $js;
    protected $path;
+   protected $root;
 
    public function __construct($path) {
+      include $_SERVER['DOCUMENT_ROOT'] . "/path.php";
+
       $this->css = [
          'bower_components/bootstrap/dist/css/bootstrap',
          'bower_components/fork/css/main',
       ];
       $this->js = [];
       $this->path = $path;
+      $this->root = $root;
    }
 
    public function addCSS() {
@@ -76,7 +81,8 @@ class Page {
 ?>
 </body>
 </html>
-<?php   } 
+<?php   
+   } 
 
 
 }
