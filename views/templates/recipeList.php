@@ -1,6 +1,6 @@
 <ul class="row list">
-   <?php foreach ($_recipes as $recipe) { ?>
-   <li class="recipeBox col-lg-6">
+   <?php foreach ($_recipes as $i => $recipe) { ?>
+   <li class="recipeBox col-lg-12">
    <h3 class="title">
       <a href="<?php echo "/recipe/id.php?id=$recipe->id"?>">
          <?php echo $recipe->title ?>
@@ -9,5 +9,8 @@
    </h3>
    <div class="instructions"> <?php echo $recipe->instructions ?> </div>
    </li>
+<?php 
+?>
+
    <?php } // end recipe list ?>
 </ul>

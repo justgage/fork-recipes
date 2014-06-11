@@ -7,7 +7,6 @@ if( (include '_tab.php') == 'OK') {
 $tabs = [
    "Home" => "/",
    "Recipes" => "/recipe",
-   "Backend" => "/user/backend.php",
 ];
 ?>
 
