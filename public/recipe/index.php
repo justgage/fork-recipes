@@ -8,6 +8,6 @@ $recipes = $recipe->getAll();
 
 $page = new Page("$root/views/templates");
 $page->title = "Homepage";
-$page->addCSS("css/main");
-//$page->addJS("js/alert");
+$page->addJS('bower_components/list.js/dist/list');
+$page->addJS('bower_components/fork/js/search');
 $page->render("recipeIndex.php", array("recipes" => $recipes));
