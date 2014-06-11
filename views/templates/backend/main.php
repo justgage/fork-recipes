@@ -8,7 +8,6 @@
    <?php endif; ?>
 <?php endif; ?>
 
-<div class="pull-right"> logged in as <strong>"<?php echo $_user->username ?>"</strong>
 <a href="/user/logout.php">Logout</a>
 </div>
 <h2>Recipies <a class="btn btn-default" href="/recipe/newForm.php">Add Recipe</a> </h2>
