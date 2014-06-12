@@ -8,14 +8,14 @@
    <?php endif; ?>
 <?php endif; ?>
 
-<a href="/user/logout.php">Logout</a>
-</div>
-<h2>Recipies <a class="btn btn-default" href="/recipe/newForm.php">Add Recipe</a> </h2>
+<a class="btn btn-warning pull-right" href="/user/logout.php">Logout <i class="glyphicon glyphicon-log-out"></i></a>
+   <h2>Recipies  </h2>
 <?php
 $num_recipes = count($_recipes);
 if($num_recipes > 0) {
 ?>
    <p>number of recipes: <?php echo $num_recipes ?></p>
+<a class="btn btn-primary" href="/recipe/newForm.php"><i class="glyphicon glyphicon-plus"></i> New Recipe</a>
 <?php include "$this->path/backend/recipeList.php";?>
 
 <?php
